@@ -1,0 +1,40 @@
+<%- include('partials/header.ejs'); -%>
+<div>
+    <div class="card-container">
+        <!-- card goes here -->
+        <% books.forEach ((book) => { %>
+        <div class="card">
+            <% covers.forEach((cover) => { %>
+                <% if(book.id === cover.book_id) { %>
+                    <img src="<%- cover.cover_url %>" class="book-cover">
+            <%  }}) %>
+            <div class="m-4">
+                <span class="book-title"><%- book.title %></span>
+                <span class="book-rating"><%- book.rating %></span>
+                <span class="book-review"><%- book.review %></span>
+            </div>
+        </div>
+        <div>
+            <button class="btn" onclick="redirectToUpdatePage()">Update</button>
+            <form action="post">
+                <button class="btn" type="submit">Delete</button>
+            </form>
+        </div>
+        <% }) %>
+    </div>
+    <div>
+        <button class="btn" onclick="redirectToAddPage()">Add a new Book</button>
+    </div>
+</div>
+<script>
+    function redirectToAddPage() {
+        window.location.href = "/add";
+    }
+    function redirectToUpdatePage() {
+        window.location.href = "/update";
+    }
+    function redirectToDeletePage() {
+        window.location.href = "/delete";
+    }
+</script>
+<%- include('partials/footer.ejs'); -%>
