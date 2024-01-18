@@ -8,16 +8,20 @@
                 <% if(book.id === cover.book_id) { %>
                     <img src="<%- cover.cover_url %>" class="book-cover">
             <%  }}) %>
-            <div class="m-4">
+            <div class="info">
                 <span class="book-title"><%- book.title %></span>
                 <span class="book-rating"><%- book.rating %></span>
                 <span class="book-review"><%- book.review %></span>
             </div>
         </div>
         <div>
-            <button class="btn" onclick="redirectToUpdatePage()">Update</button>
-            <form action="post">
-                <button class="btn" type="submit">Delete</button>
+            <form action="/update/<%= book.id %>" method="get">
+                <input type="hidden" name="_method" value="UPDATE">
+                <button type="submit" class="btn">Update Post →</button>
+            </form>
+            <form action="/delete/<%= book.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn">Delete Post →</button>
             </form>
         </div>
         <% }) %>
@@ -29,12 +33,6 @@
 <script>
     function redirectToAddPage() {
         window.location.href = "/add";
-    }
-    function redirectToUpdatePage() {
-        window.location.href = "/update";
-    }
-    function redirectToDeletePage() {
-        window.location.href = "/delete";
     }
 </script>
 <%- include('partials/footer.ejs'); -%>

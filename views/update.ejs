@@ -3,12 +3,11 @@
     <div class="card-container">
         <!-- form goes here -->
         <div class="card">
-            <form action="/add" method="post">
-                <input placeholder="Title" name="title" autocomplete="off" autofocus="true">
-                <input placeholder="Rating" name="rating" autocomplete="off">
-                <input placeholder="ISBN" name="isbn" autocomplete="off">
-                <input placeholder="Review" name="review" autocomplete="off">
-                <button class="btn" type="submit">Add</button>
+            <form action="/update/<%= book.id %>" method="post">
+                <input value="<%- book.title %>" name="title" autocomplete="off" autofocus="true">
+                <input value="<%- book.rating %>" name="rating" autocomplete="off">
+                <input value="<%- book.review %>" name="review" autocomplete="off">
+                <button class="btn" type="submit">Update</button>
             </form>
         </div>
     </div>
