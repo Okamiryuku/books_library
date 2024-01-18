@@ -31,12 +31,10 @@ async function getBookCover() {
         const result = await db.query(
             'SELECT books.id, books.title, books.isbn, covers.cover_url FROM books LEFT JOIN covers ON books.id = covers.book_id WHERE covers.cover_url IS NULL;'
         );
-        const booksWithoutCovers = result.rows;
-        for (const book of booksWithoutCovers) {
-            const response = await axios.get(`https://covers.openlibrary.org/b/isbn/${books.isbn}-L.jpg`);
-            const imageData = response.request.res.responseUrl;
-            await db.query('INSERT INTO covers (book_id, cover_url) VALUES ($1, $2);', [book.id, imageData]);
-    }
+        const book = result.rows[0];
+        const response = await axios.get(`https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`);
+        const imageData = response.request.res.responseUrl;
+        await db.query('INSERT INTO covers (book_id, cover_url) VALUES ($1, $2);', [book.id, imageData]);
     } catch (error) {
         console.error('Error fetching book cover:', error.message);
     }
@@ -46,6 +44,7 @@ await getBookCover()
 
 app.get("/", async (req, res) => {
   try {
+    await getBookCover()
     const result = await db.query("SELECT * FROM books ORDER BY id ASC");
     books = result.rows;
     const covers = await db.query("SELECT * FROM covers ORDER BY id ASC");
@@ -107,7 +106,6 @@ app.post("/update/:bookId", async (req, res) => {
     } else {
       res.redirect("/");
     }
-    
   } catch (err) {
     console.log(err);
   }
@@ -116,7 +114,9 @@ app.post("/update/:bookId", async (req, res) => {
 app.post("/delete/:bookId", async (req, res) => {
   const bookId = parseInt(req.params.bookId);
   try {
-    await db.query("DELETE FROM items WHERE id = $1", [bookId]);
+    await db.query("DELETE FROM covers WHERE book_id = $1", [bookId]);
+    await db.query("DELETE FROM books WHERE id = $1", [bookId]);
+    
     res.redirect("/");
   } catch (err) {
     console.log(err);
