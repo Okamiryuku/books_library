@@ -82,19 +82,32 @@ app.get("/update/:bookId", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM books WHERE id = $1", [bookId]);
     const book = result.rows[0];
-    console.log(book);
     res.render("update.ejs", {book: book});
   } catch (err) {
     console.log(err); 
   }});
 
 app.post("/update/:bookId", async (req, res) => {
+  const bookId = parseInt(req.params.bookId);
   const title = req.body.title;
   const rating = req.body.rating;
   const review = req.body.review;
   try {
-    await db.query("UPDATE books SET title = ($1) WHERE id = $2", [item, id]);
-    res.redirect("/");
+    const result = await db.query("SELECT * FROM books WHERE id = $1", [bookId]);
+    const book = result.rows[0];
+    if(book.title !== title) {
+      await db.query("UPDATE books SET title = ($1) WHERE id = $2", [title, bookId]);
+      res.redirect("/");
+    } else if(book.rating !== rating) {
+      await db.query("UPDATE books SET rating = ($1) WHERE id = $2", [rating, bookId]);
+      res.redirect("/");
+    } else if(book.review !== review) {
+      await db.query("UPDATE books SET review = ($1) WHERE id = $2", [review, bookId]);
+      res.redirect("/");
+    } else {
+      res.redirect("/");
+    }
+    
   } catch (err) {
     console.log(err);
   }
