@@ -1,14 +1,15 @@
 <%- include('partials/header.ejs'); -%>
-<div>
+
+<div class="content">
     <div class="card-container">
         <!-- form goes here -->
         <div class="card">
-            <form action="/add" method="post">
+            <form action="/add" method="post" class="container">
                 <input placeholder="Title" name="title" autocomplete="off" autofocus="true">
                 <input placeholder="Rating" name="rating" autocomplete="off">
                 <input placeholder="ISBN" name="isbn" autocomplete="off">
-                <input placeholder="Review" name="review" autocomplete="off">
-                <button class="btn" type="submit">Add</button>
+                <input class="review" placeholder="Review" name="review" autocomplete="off">
+                <button class="btn add-book" type="submit">Add Book</button>
             </form>
         </div>
     </div>

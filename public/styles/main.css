@@ -55,13 +55,16 @@ footer {
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 600px;
     padding: 20px;
     background-color: #0F4C75;
     border-radius: 10px;
+    transition: box-shadow 0.3s ease;
 }
 
 .container:hover {
-    box-shadow: 0 0 5px #BBE1FA;
+    box-shadow: 2px 2px 8px #3282B8;
 }
 
 .btn {
@@ -72,6 +75,7 @@ footer {
     width: 150px;
     border-radius: 10px;
     overflow: hidden;
+    transition: background-color 0.3s ease;
 }
   
 .btn:hover {
@@ -89,7 +93,7 @@ footer {
 
 .add {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 100%;
 }
@@ -106,6 +110,17 @@ footer {
 
 .delete:hover {
     background-color: #750E21;
+}
+
+input {
+    color: #1B262C;
+    font-weight: bolder;
+    margin-bottom: 6px;
+    background-color: #BBE1FA;
+}
+
+.review {
+    height: 200px;
 }
 
 form {

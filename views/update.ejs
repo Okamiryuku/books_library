@@ -1,12 +1,13 @@
 <%- include('partials/header.ejs'); -%>
-<div>
+
+<div class="content">
     <div class="card-container">
         <!-- form goes here -->
         <div class="card">
-            <form action="/update/<%= book.id %>" method="post">
+            <form action="/update/<%= book.id %>" method="post" class="container">
                 <input value="<%- book.title %>" name="title" autocomplete="off" autofocus="true">
                 <input value="<%- book.rating %>" name="rating" autocomplete="off">
-                <input value="<%- book.review %>" name="review" autocomplete="off">
+                <input class="review" value="<%- book.review %>" name="review" autocomplete="off">
                 <button class="btn" type="submit">Update</button>
             </form>
         </div>
