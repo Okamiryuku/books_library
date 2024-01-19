@@ -7,6 +7,7 @@ ul {
     margin-bottom: 20px;
     border-radius: 10px;
     overflow: hidden;
+    flex-grow: 1;
 }
   
 li {
@@ -14,7 +15,7 @@ li {
 }
   
 li a {
-    display: block;
+    display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -24,6 +25,8 @@ li a {
 li a:hover {
     background-color: #BBE1FA;
     color: #1B262C;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 body {
@@ -41,16 +44,17 @@ footer {
     border-radius: 10px;
     overflow: hidden;
 }
-.content {
-    display: grid;
-    grid-template-columns: 200px auto 200px;
-    grid-template-rows: auto 100px;
+
+.cont-flex {
+    display: flex;
+    gap: 20px;
 }
 
-.card-container {
-    grid-column-start: 2;
-    grid-column-end: 3;
+.content {
+    flex-grow: 2;
 }
+
+
 
 .container {
     display: flex;
