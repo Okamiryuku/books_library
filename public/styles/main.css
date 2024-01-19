@@ -5,63 +5,110 @@ ul {
     overflow: hidden;
     background-color: #3282B8;
     margin-bottom: 20px;
-  }
+    border-radius: 10px;
+    overflow: hidden;
+}
   
-  li {
+li {
     float: left;
-  }
+}
   
-  li a {
+li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+}
   
-  li a:hover {
+li a:hover {
     background-color: #BBE1FA;
     color: #1B262C;
-  }
+}
 
-  body {
+body {
     background-color: #1B262C;
     color: #BBE1FA;
-  }
+}
 
-  footer {
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
-    background-color: #1B262C;
-  }
-  .content {
+    background-color: #3282B8;
+    font-weight: bolder;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.content {
     display: grid;
-    grid-template-columns: 200px  auto 200px;
-  }
+    grid-template-columns: 200px auto 200px;
+    grid-template-rows: auto 100px;
+}
 
-  .card-container {
+.card-container {
     grid-column-start: 2;
     grid-column-end: 3;
-  }
+}
 
-  .card-wrap {
+.container {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #3282B8;
-  }
+    background-color: #0F4C75;
+    border-radius: 10px;
+}
 
-  .btn {
+.container:hover {
+    box-shadow: 0 0 5px #BBE1FA;
+}
+
+.btn {
     background-color: #1B262C;
     color: #BBE1FA;
     border: 0cap;
     height: 30px;
     width: 150px;
-  }
+    border-radius: 10px;
+    overflow: hidden;
+}
+  
+.btn:hover {
+    background-color: #3282B8;
+    color: #BBE1FA;
+    font-weight: bold;
+}
 
-  form {
+.book-cover {
+    height: 200px;
+    width: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.add-book {
+    background-color: #3282B8;
+    color: #BBE1FA;
+}
+
+.add-book:hover {
+    background-color: #BBE1FA;
+    color: #1B262C;
+}
+
+.delete:hover {
+    background-color: #750E21;
+}
+
+form {
     padding: 3px;
-  }
+}
 

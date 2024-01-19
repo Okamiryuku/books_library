@@ -3,7 +3,7 @@
     <div class="card-container">
         <!-- card goes here -->
         <% books.forEach ((book) => { %>
-        <div class="card-wrap">
+        <div class="container">
         <div class="card">
             <% covers.forEach((cover) => { %>
                 <% if(book.id === cover.book_id) { %>
@@ -18,25 +18,24 @@
         <div>
             <form action="/update/<%= book.id %>" method="get">
                 <input type="hidden" name="_method" value="UPDATE">
-                <button type="submit" class="btn">Update Post →</button>
+                <button type="submit" class="btn">Update Post</button>
             </form>
             <form action="/delete/<%= book.id %>" method="post">
                 <input type="hidden" name="_method" value="DELETE">
-                <button type="submit" class="btn">Delete Post →</button>
+                <button type="submit" class="btn delete">Delete Post</button>
             </form>
         </div>
         </div>
         <br>
         <% }) %>
+    <div class="add">
+        <button class="btn add-book" onclick="redirectToAddPage()">Add a new Book</button>
     </div>
-    <div>
-        <button class="btn" onclick="redirectToAddPage()">Add a new Book</button>
-    </div>
+</div>
 </div>
 <script>
     function redirectToAddPage() {
         window.location.href = "/add";
     }
-
 </script>
 <%- include('partials/footer.ejs'); -%>
