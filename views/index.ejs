@@ -1,8 +1,9 @@
 <%- include('partials/header.ejs'); -%>
-<div>
+<div class="content">
     <div class="card-container">
         <!-- card goes here -->
         <% books.forEach ((book) => { %>
+        <div class="card-wrap">
         <div class="card">
             <% covers.forEach((cover) => { %>
                 <% if(book.id === cover.book_id) { %>
@@ -24,6 +25,8 @@
                 <button type="submit" class="btn">Delete Post →</button>
             </form>
         </div>
+        </div>
+        <br>
         <% }) %>
     </div>
     <div>
@@ -34,5 +37,6 @@
     function redirectToAddPage() {
         window.location.href = "/add";
     }
+
 </script>
 <%- include('partials/footer.ejs'); -%>
